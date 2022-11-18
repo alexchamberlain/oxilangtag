@@ -26,7 +26,7 @@ pub struct LanguageTag<T> {
     positions: TagElementsPositions,
 }
 
-impl<T: Deref<Target = str>> LanguageTag<T> {
+impl<T: Deref<Target = str> + std::fmt::Debug> LanguageTag<T> {
     /// Parses a language tag acccording to [RFC 5646](https://tools.ietf.org/html/rfc5646).
     /// and checks if the tag is ["well-formed"](https://tools.ietf.org/html/rfc5646#section-2.2.9).
     ///
@@ -893,7 +893,7 @@ fn to_lowercase(s: &str) -> impl Iterator<Item = char> + '_ {
     s.chars().map(|c| c.to_ascii_lowercase())
 }
 
-const GRANDFATHEREDS: [&str; 26] = [
+const GRANDFATHEREDS: [&str; 27] = [
     "art-lojban",
     "cel-gaulish",
     "en-GB-oed",
@@ -915,6 +915,7 @@ const GRANDFATHEREDS: [&str; 26] = [
     "sgn-BE-FR",
     "sgn-BE-NL",
     "sgn-CH-DE",
+    "zh-classical",
     "zh-guoyu",
     "zh-hakka",
     "zh-min",
